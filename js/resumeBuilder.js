@@ -1,6 +1,5 @@
 var work = {
-    jobs: [
-        {
+    jobs: [{
             employer: "BMW",
             title: "Warehouse Manager",
             location: "Seclin",
@@ -30,7 +29,7 @@ var work = {
 var bio = {
     name: "Alexis Malzieu",
     age: 20,
-    skills: ["awesomeness", "CompSci", "Lazyness"],
+    skills: ["Awesomeness", "Strongness", "Intelligence", "Handsome"],
     contact: {
         mobile: "0123456789",
         email: "alexis.malzieu@gmail.com",
@@ -40,8 +39,7 @@ var bio = {
 };
 
 var education = {
-    schools: [
-        {
+    schools: [{
             name: "Lycée Marguerite de Flandes",
             location: "Gondecourt",
             dates: "2010- 2014"
@@ -55,19 +53,40 @@ var education = {
 };
 
 
+$("#header").append(HTMLheaderName.replace("%data%", bio.name));
 
 
 if (bio.skills.length > 0) {
 
-    $("header").append(HTMLskillsStart.replace("%data", bio.name));
+    $("#header").append(HTMLskillsStart);
     var formattedSkils;
 
-    for (var i = 0; i < bio.skills.lenth; i++) {
+    formattedSkils = HTMLskills.replace("%data%", bio.skills[0]);
+    $("#skills").append(formattedSkils);
 
-        formattedSkils = HTMLskills.replace("%data%", bio.skills[i]);
-        $("#skills").append(formattedSkils);
+    formattedSkils = HTMLskills.replace("%data%", bio.skills[1]);
+    $("#skills").append(formattedSkils);
 
-    }
+    formattedSkils = HTMLskills.replace("%data%", bio.skills[2]);
+    $("#skills").append(formattedSkils);
 
+    formattedSkils = HTMLskills.replace("%data%", bio.skills[3]);
+    $("#skills").append(formattedSkils);
+
+}
+
+for (var job in work.jobs) {
+    $("#workExperience").append(HTMLworkStart);
+
+    var formattedEmployer = HTMLworkEmployer.replace(
+        "%data%", work.jobs[job].employer);
+
+    var formattedTitle = HTMLworkTitle.replace(
+        "%data%", work.jobs[job].title);
+
+    var formattedEmployerTitle = formattedEmployer + formattedTitle;
+
+    $(".work-entry:last").append(
+        formattedEmployerTitle);
 
 }
